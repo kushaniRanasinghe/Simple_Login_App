@@ -1,0 +1,35 @@
+pipeline
+{
+    agent any
+
+    stages 
+    {
+        stage('Build') 
+        {
+            steps 
+            {
+                // Assuming your project uses Maven
+                sh 'mvn clean package'
+  
+                // Optionally, you can copy the JAR file to a directory
+                sh 'cp target/your-application.jar /path/to/artifact/your-application.jar'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                // Your test steps here, like running unit tests
+            }
+        }
+        stage('Deploy') {
+            steps {
+                // Your deployment steps here, like deploying to a server
+            }
+        }
+        stage('Release') {
+            steps {
+                // Your release steps here, like tagging the release version
+            }
+        }
+    }
+}
